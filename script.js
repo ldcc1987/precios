@@ -84,21 +84,14 @@ clienteSupabase.auth.onAuthStateChange((_evento, session) => {
 });
 
 async function actualizarSesion(session) {
-  estado.usuario = session?.user ?? null;
 
-  if (estado.usuario) {
-    elementos.seccionAcceso.classList.add("oculto");
-    elementos.aplicacion.classList.remove("oculto");
-    elementos.btnCerrarSesion.classList.remove("oculto");
+  // Mostrar siempre la aplicación
+  elementos.seccionAcceso.classList.add("oculto");
+  elementos.aplicacion.classList.remove("oculto");
+  elementos.btnCerrarSesion.classList.add("oculto");
 
-    await cargarProductos();
-  } else {
-    elementos.seccionAcceso.classList.remove("oculto");
-    elementos.aplicacion.classList.add("oculto");
-    elementos.btnCerrarSesion.classList.add("oculto");
-
-    estado.productos = [];
-  }
+  // Cargar productos directamente
+  await cargarProductos();
 }
 
 async function iniciarSesion(evento) {
