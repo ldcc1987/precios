@@ -212,16 +212,6 @@ async function cargarProductos() {
 
 async function guardarProducto(evento) {
   evento.preventDefault();
-
-  if (!estado.usuario) {
-    mostrarMensaje(
-      elementos.mensajeProducto,
-      "Debés iniciar sesión.",
-      "error"
-    );
-    return;
-  }
-
   const cantidad = Number(elementos.cantidad.value);
   const precioTotal = Number(elementos.precio.value);
 
@@ -235,7 +225,6 @@ async function guardarProducto(evento) {
   }
 
   const producto = {
-    user_id: estado.usuario.id,
     nombre: elementos.nombre.value.trim(),
     categoria: elementos.categoria.value,
     marca: elementos.marca.value.trim() || null,
